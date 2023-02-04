@@ -4,13 +4,15 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebAPI.Data;
-using SmartSchool.WebAPI.Dtos;
+using SmartSchool.WebAPI.v2.Dtos;
 using SmartSchool.WebAPI.Models;
 
-namespace SmartSchool.WebAPI.Controllers
+namespace SmartSchool.WebAPI.v2.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+
     public class AlunoController : ControllerBase
     {
         public readonly IRepository _repo;
@@ -21,6 +23,10 @@ namespace SmartSchool.WebAPI.Controllers
             _mapper = mapper;
         }
 
+    /// <summary>
+    /// Método responsável para retornar todos os meus alunos
+    /// </summary>
+    /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -28,12 +34,20 @@ namespace SmartSchool.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
         }
 
+    /// <summary>
+    /// Método responsável por retornar apenas um unico AlunoDTO
+    /// </summary>
+    /// <returns></returns>
         [HttpGet("getRegister")]
         public IActionResult GetRegister()
         {
             return Ok(new AlunoRegistrarDto());
         }
 
+    /// <summary>
+    /// Método responsável por retornar apenas um unico AlunoDTO filtrando por ID
+    /// </summary>
+    /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -45,6 +59,10 @@ namespace SmartSchool.WebAPI.Controllers
             return Ok(alunoDto);
         }
 
+    /// <summary>
+    /// Método responsável por inserir um novo aluno
+    /// </summary>
+    /// <returns></returns>
         [HttpPost]
         public IActionResult Post(AlunoRegistrarDto model){
             var aluno = _mapper.Map<Aluno>(model);
@@ -56,6 +74,11 @@ namespace SmartSchool.WebAPI.Controllers
             }
             return BadRequest("Aluno não cadastrado");
         }
+
+    /// <summary>
+    /// Método responsável por alterar um aluno existente
+    /// </summary>
+    /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, AlunoRegistrarDto model)
         {
@@ -72,6 +95,10 @@ namespace SmartSchool.WebAPI.Controllers
             return BadRequest("Aluno não atualizado");
         }
 
+    /// <summary>
+    /// Método responsável por alterar um aluno existente
+    /// </summary>
+    /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, AlunoRegistrarDto model){
              var alu = _repo.GetAlunoById(id,false);
@@ -86,6 +113,11 @@ namespace SmartSchool.WebAPI.Controllers
             }
             return BadRequest("Aluno não atualizado");
         }
+
+    /// <summary>
+    /// Método responsável por excluir um aluno existente
+    /// </summary>
+    /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id){
             var alu = _repo.GetAlunoById(id,false);

@@ -1,8 +1,8 @@
 using System;
 
-namespace SmartSchool.WebAPI.Dtos
+namespace SmartSchool.WebAPI.v1.Dtos
 {
-    public class ProfessorRegistrarDto
+    public class ProfessorDto
     {
 
         public int Id { get; set; }
