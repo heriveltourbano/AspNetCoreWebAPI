@@ -54,13 +54,13 @@ namespace SmartSchool.WebAPI.Data
             
             builder.Entity<Aluno>()
                 .HasData(new List<Aluno>(){
-                    new Aluno(1, 1, "Marta", "Kent", "33225555", DateTime.Parse("28/05/2005")),
-                    new Aluno(2, 2, "Paula", "Isabela", "3354288", DateTime.Parse("28/05/2005")),
-                    new Aluno(3, 3, "Laura", "Antonia", "55668899", DateTime.Parse("28/05/2005")),
-                    new Aluno(4, 4, "Luiza", "Maria", "6565659", DateTime.Parse("28/05/2005")),
-                    new Aluno(5, 5, "Lucas", "Machado", "565685415", DateTime.Parse("28/05/2005")),
-                    new Aluno(6, 6, "Pedro", "Alvares", "456454545", System.DateTime.Parse("28/05/2005")),
-                    new Aluno(7, 7, "Paulo", "José", "9874512", DateTime.Parse("28/05/2005"))
+                    new Aluno(1, 1, "Marta", "Kent", "33225555", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(2, 2, "Paula", "Isabela", "3354288", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(3, 3, "Laura", "Antonia", "55668899", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(4, 4, "Luiza", "Maria", "6565659", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(5, 5, "Lucas", "Machado", "565685415", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(6, 6, "Pedro", "Alvares", "456454545", System.DateTime.Parse("05/28/2005")),
+                    new Aluno(7, 7, "Paulo", "José", "9874512", System.DateTime.Parse("05/28/2005"))
                 });
 
             builder.Entity<AlunoDisciplina>()
